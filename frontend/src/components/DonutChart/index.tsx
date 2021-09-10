@@ -3,7 +3,7 @@ import Chart from 'react-apexcharts';
 import { SaleSum } from 'types/sale';
 import { BASE_URL } from 'utils/requests';
 
-type ChartData = {
+type CharData = {
     labels: string[];
     series: number[];
 }
@@ -11,17 +11,17 @@ type ChartData = {
 const DonutChart = () => {
     
     // FORMA ERRADA
-    let chartData : ChartData = { labels: [], series: []};
+    let chartData : CharData = { labels: [], series: []};
 
     // FORMA ERRADA
     axios.get(`${BASE_URL}/sales/amount-by-seller`)
         .then(response => {
-                const data = response.data as SaleSum[];
-                const myLabels = data.map(x => x.sellerName);
-                const mySeries = data.map(x => x.sum);
+            const data = response.data as SaleSum[];
+            const myLabels = data.map(x => x.sellerName);
+            const mySeries = data.map(x => x.sum);
 
-                chartData = { labels: myLabels, series: mySeries};
-                console.log(chartData);
+            chartData = { labels: myLabels, series: mySeries};
+            console.log(chartData);
         });
 
     //const mockData = {
